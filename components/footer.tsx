@@ -1,62 +1,42 @@
 import Link from "next/link"
 
-export function Footer() {
+export default function Footer() {
   return (
-    <footer className="border-t py-8 md:py-12">
-      <div className="container flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">LocalEvents</h3>
-          <p className="text-sm text-muted-foreground">Discover and attend the best local events near you</p>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
-          <div className="flex flex-col gap-2">
-            <h4 className="font-medium">Explore</h4>
-            <nav className="flex flex-col gap-2">
-              <Link href="/events" className="text-sm text-muted-foreground hover:text-primary">
-                All Events
-              </Link>
-              <Link href="/categories" className="text-sm text-muted-foreground hover:text-primary">
-                Categories
-              </Link>
-              <Link href="/map" className="text-sm text-muted-foreground hover:text-primary">
-                Map View
-              </Link>
-            </nav>
+    <footer className="border-t bg-background">
+      <div className="container mx-auto px-4 py-8 md:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 className="font-bold text-xl mb-4">
+              <span className="text-primary">Local</span>Events
+            </h3>
+            <p className="text-muted-foreground">Discover and attend the best local events happening near you.</p>
           </div>
-          <div className="flex flex-col gap-2">
-            <h4 className="font-medium">Company</h4>
-            <nav className="flex flex-col gap-2">
-              <Link href="/about" className="text-sm text-muted-foreground hover:text-primary">
-                About Us
-              </Link>
-              <Link href="/contact" className="text-sm text-muted-foreground hover:text-primary">
-                Contact
-              </Link>
-              <Link href="/careers" className="text-sm text-muted-foreground hover:text-primary">
-                Careers
-              </Link>
-            </nav>
-          </div>
-          <div className="flex flex-col gap-2">
-            <h4 className="font-medium">Legal</h4>
-            <nav className="flex flex-col gap-2">
-              <Link href="/terms" className="text-sm text-muted-foreground hover:text-primary">
-                Terms
-              </Link>
-              <Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary">
-                Privacy
-              </Link>
-              <Link href="/cookies" className="text-sm text-muted-foreground hover:text-primary">
-                Cookies
-              </Link>
-            </nav>
+
+          <div>
+            <h4 className="font-semibold mb-4">Quick Links</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/" className="text-muted-foreground hover:text-primary">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/events" className="text-muted-foreground hover:text-primary">
+                  Events
+                </Link>
+              </li>
+              <li>
+                <Link href="/saved" className="text-muted-foreground hover:text-primary">
+                  Saved Events
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
-      <div className="container mt-8 pt-8 border-t">
-        <p className="text-xs text-muted-foreground text-center">
-          © {new Date().getFullYear()} LocalEvents. All rights reserved.
-        </p>
+
+        <div className="mt-8 pt-8 border-t text-center text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} LocalEvents. All rights reserved.</p>
+        </div>
       </div>
     </footer>
   )

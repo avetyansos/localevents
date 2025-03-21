@@ -1,35 +1,36 @@
 import type React from "react"
+import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { ThemeProvider } from "@/components/theme-provider"
+import Navbar from "@/components/navbar"
+import Footer from "@/components/footer"
+import { Providers } from "@/components/providers"
 import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] })
 
-export const metadata = {
-  title: "LocalEvents - Discover Events Near You",
-  description: "Find and attend local events, concerts, festivals, and workshops in your area.",
+export const metadata: Metadata = {
+  title: "LocalEvents - Find Events Near You",
+  description: "Discover local concerts, festivals, workshops and more events happening near you.",
     generator: 'v0.dev'
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <Providers>
           <div className="flex min-h-screen flex-col">
-            <Header />
+            <Navbar />
             <main className="flex-1">{children}</main>
             <Footer />
+            <Toaster />
           </div>
-          <Toaster />
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   )
