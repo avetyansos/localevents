@@ -21,20 +21,26 @@ export function Toaster() {
       {toasts.map((toast) => (
         <div
           key={toast.id}
-          className={`p-4 rounded-md shadow-lg border flex justify-between items-start ${
+          className={`p-4 rounded-md shadow-lg border flex justify-between items-center ${
             toast.variant === "destructive"
               ? "bg-destructive text-destructive-foreground border-destructive"
               : "bg-background text-foreground border-border"
           }`}
         >
-          <div>
+          <div className="flex-1">
             {toast.title && <div className="font-semibold">{toast.title}</div>}
             {toast.description && <div className="text-sm mt-1">{toast.description}</div>}
           </div>
-          <button onClick={() => dismiss(toast.id)} className="ml-4 text-muted-foreground hover:text-foreground">
-            <X className="h-4 w-4" />
-            <span className="sr-only">Close</span>
-          </button>
+          <div className="flex items-center gap-2 ml-4">
+            {toast.action}
+            <button
+              onClick={() => dismiss(toast.id)}
+              className="text-muted-foreground hover:text-foreground"
+              aria-label="Close toast"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
         </div>
       ))}
     </div>
